@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="encryption" class="kr.green.core.vo.RSAEncryption"></bean>
+	<bean id="messaging" class="kr.green.core.vo.EmailMessaging"></bean>
+	
+	<!-- 생성자를 이용한 주입 -->
+	<bean id="encryptionMessaging1" class="kr.green.core.vo.EncryptionMessaging">
+		<constructor-arg ref="encryption"></constructor-arg>
+		<constructor-arg ref="messaging"></constructor-arg>
+	</bean>
+
+	<!-- Setter를 이용한 주입(이것때문에 빈 생성자가 필요함) --> 
+	<bean id="encryptionMessaging2" class="kr.green.core.vo.EncryptionMessaging">
+		<property name="encryption" ref="encryption"></property>	
+		<property name="messaging" ref="messaging"></property>	
+	</bean>
+	
+	<!-- 생성자와 Setter를 이용한 주입 -->
+	<bean id="encryptionMessaging3" class="kr.green.core.vo.EncryptionMessaging">
+		<constructor-arg ref="messaging"></constructor-arg>
+		<property name="encryption" ref="encryption"></property>
+	</bean>
+
+	<bean id="encryptionMessaging4" class="kr.green.core.vo.EncryptionMessaging">
+		<constructor-arg ref="encryption"></constructor-arg>
+		<property name="messaging" ref="messaging"></property>	
+	</bean>
+</beans>
