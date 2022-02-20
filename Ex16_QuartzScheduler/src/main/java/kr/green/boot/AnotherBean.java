@@ -9,4 +9,5 @@ public class AnotherBean {
         System.out.println("I am called by Quartz jobBean using CronTriggerFactoryBean");
     }
      
+   
 }

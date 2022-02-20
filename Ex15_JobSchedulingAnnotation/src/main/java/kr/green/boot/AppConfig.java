@@ -12,4 +12,5 @@ public class AppConfig {
 	public MyBean myBean() {
 		return new MyBean();
 	}
+
 }
